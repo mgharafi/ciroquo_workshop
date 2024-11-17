@@ -99,7 +99,6 @@ class Surrogate_Sofomore(Sofomore):
                 self.archive.add_list(objective_vals)
         self.countiter += 1
 
-
 class LQCOMO:
     def __init__(
         self,
@@ -112,6 +111,7 @@ class LQCOMO:
         output="exdata",
         tau_tresh=0.85,
         log=False,
+        model=None,
         min_evals_percent=0,
         return_true_fitnesses=True,
         UPDATE_POLICIES={},
@@ -154,7 +154,7 @@ class LQCOMO:
         self.solver.updatCMALoggerPath()
 
         for ikernel, kernel in enumerate(self.solver):
-            kernel.surrogate = SurrogatePopulation(self.uhvi(kernel))
+            kernel.surrogate = SurrogatePopulation(self.uhvi(kernel), model=model)
             kernel.surrogate.settings.tau_truth_threshold = self.tau_tresh
             kernel.surrogate.settings.min_evals_percent = self.min_evals_percent
             kernel.surrogate.settings.return_true_fitnesses = self.return_true_fitnesses

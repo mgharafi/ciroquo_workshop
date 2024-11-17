@@ -135,6 +135,7 @@ class RankLQModel(LQModel):
     def __init__(self, use_cma_transformation=False,**super_args):
         super().__init__(**super_args)
         self.use_cma_transformation = use_cma_transformation
+        self.weighted = False
     @property
     def coefficients(self):
         """model coefficients that are linear in self.expand(.)"""
