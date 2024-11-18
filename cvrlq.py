@@ -171,7 +171,7 @@ class RankLQModel(LQModel):
             C = cma_ff_transf(U, CMA_PROBLEMS)
             T = np.vstack((V, np.linspace(0,1,size), C))
         else:
-            T = np.vstack((V, np.linspace(0, 1, size), V**.1, V**.5, V**.9, V**2, V**4))
+            T = np.vstack((V, np.linspace(0, 1, size)))
 
         sorted_models = get_transformations_sorting(*cross_validation_setup(U,Z,T))
         
